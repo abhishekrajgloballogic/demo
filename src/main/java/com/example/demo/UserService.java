@@ -19,4 +19,9 @@ public class UserService {
     public User getById(Long id){
         return userRepo.getOne(id);
     }
+
+    @Transactional
+    public void deleteUser(Long id){
+         userRepo.deleteById(id);
+    }
 }

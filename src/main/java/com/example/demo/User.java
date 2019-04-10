@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 
 @Entity
@@ -31,6 +30,7 @@ public class User {
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         this.name = name;

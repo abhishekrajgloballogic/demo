@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "user")
@@ -16,23 +17,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @Column(name = "name")
     private String name;
 
-    public Long getId() {
-        return id;
-    }
+    @NotNull
+    @Column(name = "email_id")
+    private String emailId;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @NotNull
+    @Column(name = "mobile_no")
+    private String mobileNo;
 
-    public String getName() {
-        return name;
-    }
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "add_id")
+    private Address address;
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

@@ -1,8 +1,9 @@
 package com.example.demo;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.lang.reflect.InvocationTargetException;
 
 @RestController
 public class UserController {
@@ -23,5 +24,11 @@ public class UserController {
     @DeleteMapping(value = "/user/{id}")
     public void deleteUserById(@PathVariable Long id){
          userService.deleteUser(id);
+    }
+
+    @PutMapping(value = "/user/{id}")
+    public User updateUser(@RequestBody User user, @PathVariable Long id) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, InstantiationException {
+       User updateUser = userService.updateUser(user,id);
+       return updateUser;
     }
 }

@@ -34,9 +34,9 @@ public class UserService {
     }
 
     @Transactional
-    public User updateUser(User updateUser, Long id ) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, InstantiationException {
+    public User updateUser(User updateUser, Long id ) throws InvocationTargetException, IllegalAccessException {
         User user =  userRepo.findById(id).get();
-    
+        updateMapper.copyProperties(user, updateUser);
         return userRepo.save(user);
     }
 }

@@ -30,5 +30,6 @@ public class Test {
         //demo 2 is old value object ... new value map in demo 2
         modelMapper.map(demo3,demo2);
         System.out.println(demo2.toString());
+        System.out.println("demo3");
     }
 }

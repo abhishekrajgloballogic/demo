@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.Util.UpdateMapper;
+import com.example.demo.util.UpdateMapper;
 import com.example.demo.dao.UserRepo;
 import com.example.demo.entity.User;
 import org.modelmapper.Conditions;

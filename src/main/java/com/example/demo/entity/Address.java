@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "address")
 @Getter
 @Setter
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Util;
 
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.modelmapper.ModelMapper;

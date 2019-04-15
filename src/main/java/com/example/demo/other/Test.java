@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.other;
 
 import lombok.ToString;
 import org.modelmapper.Conditions;
@@ -7,10 +7,12 @@ import org.modelmapper.ModelMapper;
 @ToString
 public class Test {
     public static void main(String[] args) {
+        //Address
         Demo1 demo1 = new Demo1();
         demo1.setName1("abhii");
         demo1.setAge1("10");
 
+        //User
         Demo2 demo2 = new Demo2();
         demo2.setAge2("15");
         demo2.setName2("raj");
@@ -18,6 +20,7 @@ public class Test {
 
         System.out.println(demo2.toString());
 
+        //Address partial field
         Demo1 demo3 = new Demo1();
         demo3.setName1("abhi update");
 
@@ -27,8 +30,5 @@ public class Test {
         //demo 2 is old value object ... new value map in demo 2
         modelMapper.map(demo3,demo2);
         System.out.println(demo2.toString());
-
-
-
     }
 }

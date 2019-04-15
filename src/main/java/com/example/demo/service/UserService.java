@@ -1,14 +1,18 @@
 package com.example.demo.service;
 
-import com.example.demo.util.UpdateMapper;
 import com.example.demo.dao.UserRepo;
 import com.example.demo.entity.User;
+import com.example.demo.exception.UserNotFoundException;
+import com.example.demo.util.PropertyFileReader;
+import com.example.demo.util.UpdateMapper;
 import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -18,14 +22,20 @@ public class UserService {
     @Autowired
     private UpdateMapper updateMapper;
 
+    @Autowired
+    private PropertyFileReader propertyFileReader;
+
     @Transactional
     public User saveUser(User user) {
         return userRepo.save(user);
     }
 
     @Transactional
-    public User getById(Long id) {
-        return userRepo.getOne(id);
+    public Optional<User> getById(Long id) {
+        Optional<User> user = userRepo.findById(id);
+        if (!user.isPresent())
+            throw new UserNotFoundException(propertyFileReader.get("user.not.found"), HttpStatus.NOT_FOUND.value());
+        return user;
     }
 
     @Transactional

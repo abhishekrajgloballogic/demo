@@ -1,9 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.User;
+import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -17,8 +22,10 @@ public class UserController {
     }
 
     @GetMapping(value = "/user/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.getById(id);
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+       User user =  userService.getById(id).get();
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/user/{id}")

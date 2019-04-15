@@ -29,7 +29,7 @@ public class User {
     @Column(name = "mobile_no")
     private String mobileNo;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "add_id")
     private Address address;
 

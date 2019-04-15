@@ -23,7 +23,8 @@ public class UserService {
 
     @Transactional
     public User getById(Long id) {
-        return userRepo.getOne(id);
+         User user = userRepo.findById(id).get();
+        return user;
     }
 
     @Transactional
